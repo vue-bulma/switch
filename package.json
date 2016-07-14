@@ -1,7 +1,7 @@
 {
   "name": "vue-bulma-switch",
   "version": "1.0.0",
-  "description": "Switch Component for Vue Bulma",
+  "description": "Switch component for Vue Bulma",
   "main": "src/Switch.vue",
   "devDependencies": {
     "bulma": "0.1.0",
@@ -10,10 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vue-bulma/switch.git"
-  },
+  "repository": "git+https://github.com/vue-bulma/switch.git",
   "keywords": [
     "vue",
     "bulma",
@@ -23,9 +20,5 @@
     "switch"
   ],
   "author": "Fangdun Cai <cfddream@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/vue-bulma/switch/issues"
-  },
-  "homepage": "https://github.com/vue-bulma/switch#readme"
+  "license": "MIT"
 }
