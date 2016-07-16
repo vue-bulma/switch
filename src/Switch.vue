@@ -12,10 +12,7 @@ export default {
     type: String,
     size: String,
     checked: Boolean,
-    value: {
-      type: Boolean,
-      default: false
-    }
+    value: Boolean
   },
 
   ready () {
