@@ -1,6 +1,6 @@
 <template>
   <label class="switch" :class="classObject">
-    <input type="checkbox" :disabled="disabled" v-model="realValue">
+    <input type="checkbox" :disabled="disabled" v-model="value">
   </label>
 </template>
 
@@ -16,28 +16,28 @@ export default {
 
   data () {
     return {
-      realValue: this.checked
+      value: this.checked
     }
   },
 
   mounted () {
-    this.realValue = !!this.checked
+    this.$emit('input', this.value = !!this.checked)
   },
 
   computed: {
     classObject () {
-      const { type, size, realValue } = this
+      const { type, size, value } = this
       return {
         [`is-${type}`]: type,
         [`is-${size}`]: size,
-        checked: realValue
+        checked: value
       }
     }
   },
 
   watch: {
-    realValue (val) {
-      this.$emit('change', val)
+    value (val) {
+      this.$emit('input', val)
     }
   }
 }
