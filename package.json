@@ -1,11 +1,11 @@
 {
   "name": "vue-bulma-switch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Switch component for Vue Bulma",
   "main": "src/Switch.vue",
   "peerDependencies": {
     "bulma": "^0.2",
-    "vue": ">=2.0.0-beta.0"
+    "vue": ">=2"
   },
   "scripts": {},
   "repository": "git+https://github.com/vue-bulma/switch.git",
