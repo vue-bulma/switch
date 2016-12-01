@@ -16,10 +16,10 @@ $ npm install vue-bulma-switch --save
 <template>
   <div>
     <p>
-      <vb-switch type="success" size="large" :value="value" checked @change="updateValue"></vb-switch>
+      <vb-switch type="success" size="large" checked v-model="value"></vb-switch>
     </p>
     <p>
-      {{ value }}
+      {{ text }}
     </p>
   </div>
 </template>
@@ -36,11 +36,14 @@ export default {
 
   data () {
     return {
-      value: false
+      value: false,
+      text: ''
+    }
+  },
 
-  methods: {
-    updateValue (val) {
-      this.value = val
+  watch: {
+    value (val) {
+      this.text = val ? 'Right' : 'Wrong'
     }
   }
 }
