@@ -1,6 +1,6 @@
 <template>
   <label class="switch" :class="classObject">
-    <input type="checkbox" :disabled="disabled" v-model="value">
+    <input type="checkbox" :name="name" :disabled="disabled" v-model="value">
   </label>
 </template>
 
@@ -11,7 +11,8 @@ export default {
     isFullwidth: Boolean,
     type: String,
     size: String,
-    checked: Boolean
+    checked: Boolean,
+    name: String
   },
 
   data () {
