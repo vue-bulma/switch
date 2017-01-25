@@ -30,11 +30,11 @@ export default {
 
   computed: {
     classObject () {
-      const { type, size, value } = this
+      const { type, size, checked } = this
       return {
         [`is-${type}`]: type,
         [`is-${size}`]: size,
-        checked: value
+        checked
       }
     }
   },
