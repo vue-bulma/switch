@@ -16,8 +16,12 @@ export default {
 
   data () {
     return {
-      value: this.checked
+      value: null
     }
+  },
+
+  beforeMount () {
+    this.value = this.checked
   },
 
   mounted () {
