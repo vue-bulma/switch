@@ -1,6 +1,6 @@
 <template>
   <label class="switch" :class="classObject">
-    <input type="checkbox" :disabled="disabled" v-model="value">
+    <input type="checkbox" :disabled="disabled" :checked="checked" @change="onChange">
   </label>
 </template>
 
@@ -14,18 +14,8 @@ export default {
     checked: Boolean
   },
 
-  data () {
-    return {
-      value: null
-    }
-  },
-  
-  beforeMount () {
-    this.value = this.checked;
-  },
-
   mounted () {
-    this.$emit('input', this.value = !!this.checked)
+    this.$emit('input', !!this.checked)
   },
 
   computed: {
@@ -39,9 +29,9 @@ export default {
     }
   },
 
-  watch: {
-    value (val) {
-      this.$emit('input', val)
+  methods: {
+    onChange (e) {
+      this.$emit('input', e.target.checked)
     }
   }
 }
