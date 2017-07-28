@@ -1,6 +1,12 @@
 <template>
   <label class="switch" :class="classObject">
-    <input type="checkbox" :name="name" :disabled="disabled" v-model="value">
+    <input
+      :disabled="disabled"
+      :name="name"
+      :value="value"
+      @change="handleChange"
+      type="checkbox"
+    >
   </label>
 </template>
 
@@ -12,21 +18,8 @@ export default {
     type: String,
     size: String,
     checked: Boolean,
-    name: String
-  },
-
-  data () {
-    return {
-      value: null
-    }
-  },
-
-  beforeMount () {
-    this.value = this.checked
-  },
-
-  mounted () {
-    this.$emit('input', this.value = !!this.checked)
+    name: String,
+    value: Boolean
   },
 
   computed: {
@@ -40,9 +33,9 @@ export default {
     }
   },
 
-  watch: {
-    value (val) {
-      this.$emit('input', val)
+  methods: {
+    handleChange (event) {
+      this.$emit('input', event.target.checked)
     }
   }
 }
