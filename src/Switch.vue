@@ -4,6 +4,7 @@
       :disabled="disabled"
       :name="name"
       :value="value"
+      :checked="checked"
       @change="handleChange"
       type="checkbox"
     >
