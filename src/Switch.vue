@@ -43,6 +43,7 @@ export default {
 
 <style lang="scss">
 @import '~bulma/sass/utilities/initial-variables';
+@import '~bulma/sass/utilities/derived-variables';
 
 .switch {
   --height: 22px;
