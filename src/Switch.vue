@@ -1,10 +1,10 @@
 <template>
   <label class="switch" :class="classObject">
     <input
+      ref="input"
       :disabled="disabled"
       :name="name"
       :value="value"
-      :checked="value"
       @change="handleChange"
       type="checkbox"
     >
@@ -18,7 +18,6 @@ export default {
     isFullwidth: Boolean,
     type: String,
     size: String,
-    checked: Boolean,
     name: String,
     value: Boolean
   },
@@ -34,10 +33,24 @@ export default {
     }
   },
 
+  watch: {
+    value () {
+      this.applyValue()
+    }
+  },
+
   methods: {
     handleChange (event) {
       this.$emit('input', event.target.checked)
+    },
+
+    applyValue () {
+      this.$refs.input.checked = !!this.value
     }
+  },
+
+  mounted () {
+    this.applyValue()
   }
 }
 </script>
