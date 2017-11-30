@@ -33,6 +33,8 @@ export default {
     size: String,
     model: [String, Number, Boolean, Array],
     inputClass: [String, Number, Array, Object],
+    trueValue: true,
+    falseValue: true,
     value: {
       type: [String, Number, Boolean],
       default: 'on'
@@ -40,20 +42,24 @@ export default {
   },
 
   data() {
-    const dataType = this.getDateType()
+    const dt = this.getDateType()
+    const t = this.getTrue()
+    const f = this.getFalse()
     return {
-      checked: this.initCheck(this.model, this.value, dataType),
-      dataType
+      checked: this.initCheck(this.model, t, dt),
+      dt,
+      t,
+      f
     }
   },
 
   computed: {
     classObject() {
-      const { type, size } = this
+      const { type, size, checked } = this
       return {
         [`is-${type}`]: type,
         [`is-${size}`]: size,
-        checked: this.initCheck(this.model, this.value, this.dataType)
+        checked
       }
     }
   },
@@ -64,35 +70,41 @@ export default {
         ? 2
         : typeof this.model === 'boolean' ? 1 : 0
     },
-    initCheck(model, value, t) {
-      if (t === 2) {
+    getTrue() {
+      return this.trueValue === undefined ? this.value : this.trueValue
+    },
+    getFalse() {
+      return this.falseValue === undefined ? null : this.falseValue
+    },
+    initCheck(model, value, dt) {
+      if (dt === 2) {
         return model.includes(value)
       }
 
-      if (t === 1) {
+      if (dt === 1) {
         return model
       }
 
       return model === value
     },
-    set(checked, model, value, t) {
-      if (t === 2) {
+    set(checked, model, t, f, dt) {
+      if (dt === 2) {
         const i = model.indexOf(value)
         const has = i !== -1
         if (checked && !has) {
-          model.push(value)
+          model.push(t)
         } else if (!checked && has) {
           model.splice(i, 1)
         }
         this.$emit('change', model)
-      } else if (t === 1) {
+      } else if (dt === 1) {
         this.$emit('change', checked)
       } else {
-        this.$emit('change', checked ? value : null)
+        this.$emit('change', checked ? t : f)
       }
     },
-    input() {
-      this.set(this.checked, this.model, this.value, this.dataType)
+    input({ target: { checked } }) {
+      this.set(this.checked, this.model, this.t, this.f, this.dt)
     }
   }
 }
@@ -110,11 +122,12 @@ export default {
     display: inline-flex;
     width: 100%;
     height: 100%;
-    position: absolute;
+    // position: absolute;
     z-index: 1;
     cursor: pointer;
   }
 
+  appearance: none;
   position: relative;
   outline: 0;
   border-radius: calc(0.8 * var(--height));
