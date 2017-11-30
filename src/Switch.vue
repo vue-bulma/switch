@@ -3,6 +3,7 @@
     <input
       ref="input"
       type="checkbox"
+      class="checkbox"
       v-model="checked"
       @change="input"
       v-bind="{
@@ -10,7 +11,8 @@
         name,
         value,
         disabled,
-        required
+        required,
+        class: inputClass
       }"
     >
   </label>
@@ -30,6 +32,7 @@ export default {
     type: String,
     size: String,
     model: [String, Number, Boolean, Array],
+    inputClass: [String, Number, Array, Object],
     value: {
       type: [String, Number, Boolean],
       default: 'on'
@@ -46,11 +49,11 @@ export default {
 
   computed: {
     classObject() {
-      const { type, size, checked } = this
+      const { type, size } = this
       return {
         [`is-${type}`]: type,
         [`is-${size}`]: size,
-        checked
+        checked: this.initCheck(this.model, this.value, this.dataType)
       }
     }
   },
@@ -112,7 +115,6 @@ export default {
     cursor: pointer;
   }
 
-  appearance: none;
   position: relative;
   outline: 0;
   border-radius: calc(0.8 * var(--height));
@@ -122,7 +124,10 @@ export default {
   border: 1px solid $border;
   cursor: pointer;
   box-sizing: border-box;
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
   -webkit-tap-highlight-color: transparent;
 
   &:before,
