@@ -16,7 +16,7 @@ $ npm install vue-bulma-switch --save
 <template>
   <div>
     <p>
-      <vb-switch type="success" size="large" checked v-model="value"></vb-switch>
+      <vb-switch type="success" size="large" v-model="value" @change="change"/>
     </p>
     <p>
       {{ text }}
@@ -41,8 +41,8 @@ export default {
     }
   },
 
-  watch: {
-    value (val) {
+  methods: {
+    change (val) {
       this.text = val ? 'Right' : 'Wrong'
     }
   }
