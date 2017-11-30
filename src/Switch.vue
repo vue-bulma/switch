@@ -107,7 +107,7 @@ export default {
 
   input {
     opacity: 0;
-    display: inline-block;
+    display: inline-flex;
     width: 100%;
     height: 100%;
     position: absolute;
