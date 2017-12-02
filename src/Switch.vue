@@ -103,7 +103,7 @@ export default {
         this.$emit('change', checked ? t : f)
       }
     },
-    input({ target: { checked } }) {
+    input() {
       this.set(this.checked, this.model, this.t, this.f, this.dt)
     }
   }
