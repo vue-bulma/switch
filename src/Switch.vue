@@ -106,6 +106,22 @@ export default {
     input() {
       this.set(this.checked, this.model, this.t, this.f, this.dt)
     }
+  },
+
+  watch: {
+    value(v) {
+      const dt = this.getDateType()
+      switch (dt) {
+        case 2:
+          this.checked = this.model.includes(v)
+          break
+        case 1:
+          this.checked = v
+          break
+        default:
+          this.checked = v === this.trueValue
+      }
+    }
   }
 }
 </script>
