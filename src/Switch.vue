@@ -1,20 +1,13 @@
 <template>
   <label class="switch" :class="classObject">
-    <input
-      ref="input"
-      type="checkbox"
-      class="checkbox"
-      v-model="checked"
-      @change="input"
-      v-bind="{
+    <input ref="input" type="checkbox" class="checkbox" v-model="checked" @change="input" v-bind="{
         id,
         name,
         value,
         disabled,
         required,
         class: inputClass
-      }"
-    >
+      }">
   </label>
 </template>
 
@@ -89,7 +82,7 @@ export default {
     },
     set(checked, model, t, f, dt) {
       if (dt === 2) {
-        const i = model.indexOf(value)
+        const i = model.indexOf(checked)
         const has = i !== -1
         if (checked && !has) {
           model.push(t)
