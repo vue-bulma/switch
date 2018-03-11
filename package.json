@@ -1,6 +1,6 @@
 {
   "name": "vue-bulma-switch",
-  "version": "2.0.0-alpha.3",
+  "version": "2.0.0-alpha.4",
   "description": "Switch component for Vue Bulma",
   "main": "src/Switch.vue",
   "peerDependencies": {
