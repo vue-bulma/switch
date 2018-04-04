@@ -124,7 +124,7 @@ export default {
 @import '~bulma/sass/utilities/derived-variables.sass';
 
 .switch {
-  --height: $size-normal;
+  --height: #{$size-normal};
 
   input {
     opacity: 0;
@@ -198,13 +198,13 @@ export default {
 
   // Sizes
   &.is-small {
-    --height: $size-small;
+    --height: #{$size-small};
   }
   &.is-medium {
-    --height: $size-medium;
+    --height: #{$size-medium};
   }
   &.is-large {
-    --height: $size-large;
+    --height: #{$size-large};
   }
 }
 </style>
