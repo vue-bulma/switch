@@ -120,10 +120,12 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~bulma/sass/utilities/_all';
+@import '~bulma/sass/utilities/initial-variables';
+@import '~bulma/sass/utilities/functions';
+@import '~bulma/sass/utilities/derived-variables';
 
 .switch {
-  --height: $size-normal;
+  --height: #{$size-normal};
 
   input {
     opacity: 0;
@@ -197,13 +199,14 @@ export default {
 
   // Sizes
   &.is-small {
-    --height: $size-small;
+    --height: #{$size-small};
   }
   &.is-medium {
-    --height: $size-medium;
+    --height: #{$size-medium};
   }
   &.is-large {
-    --height: $size-large;
+    --height: #{$size-large};
   }
+
 }
 </style>
