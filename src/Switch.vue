@@ -120,8 +120,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~bulma/sass/utilities/initial-variables';
-@import '~bulma/sass/utilities/derived-variables.sass';
+@import '~bulma/sass/utilities/_all';
 
 .switch {
   --height: $size-normal;
