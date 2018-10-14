@@ -35,7 +35,7 @@ export default {
   },
 
   data() {
-    const dt = this.getDateType()
+    const dt = this.getDataType()
     const t = this.getTrue()
     const f = this.getFalse()
     return {
@@ -58,7 +58,7 @@ export default {
   },
 
   methods: {
-    getDateType() {
+    getDataType() {
       return Array.isArray(this.model)
         ? 2
         : typeof this.model === 'boolean' ? 1 : 0
@@ -80,9 +80,9 @@ export default {
 
       return model === value
     },
-    set(checked, model, t, f, dt) {
+    set(checked, model, t, f, dt, value) {
       if (dt === 2) {
-        const i = model.indexOf(checked)
+        const i = model.indexOf(value)
         const has = i !== -1
         if (checked && !has) {
           model.push(t)
@@ -97,13 +97,13 @@ export default {
       }
     },
     input() {
-      this.set(this.checked, this.model, this.t, this.f, this.dt)
+      this.set(this.checked, this.model, this.t, this.f, this.dt, this.value)
     }
   },
 
   watch: {
     value(v) {
-      const dt = this.getDateType()
+      const dt = this.getDataType()
       switch (dt) {
         case 2:
           this.checked = this.model.includes(v)
